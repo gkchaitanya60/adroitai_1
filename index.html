@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adroit IT | Next-Gen Technology Solutions for Business</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        h3 { font-size: 1.75rem; }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-tex2 {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Left Navigation */
+        .sidebar {
+            width: 280px;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            height: 100vh;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            margin-bottom: 3rem;
+        }
+        
+        .logo-icon {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            background: white;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: scale(1.05);
+        }
+        
+        .logo-icon img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            list-style: none;
+            flex-grow: 1;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+        
+        .nav-links a i {
+            width: 1.5rem;
+            text-align: center;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 101;
+        }
+        
+        .mobile-close-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 101;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') no-repeat;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+        }
+        
+        .hero-text {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text h1 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        /* Why Choose Us */
+        .why-us {
+            background-color: white;
+        }
+        
+        .why-us-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .why-us-content h2 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .why-us-content p {
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .differentiators {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .differentiator {
+            background-color: #f8fafc;
+            padding: 2rem 1.5rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--primary);
+            text-align: left;
+        }
+        
+        .differentiator h4 {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .differentiator h4 i {
+            color: var(--primary);
+        }
+        
+        .differentiator p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .why-us-image {
+            text-align: center;
+        }
+        
+        .why-us-image img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Services */
+        .services {
+            background-color: #f8fafc;
+        }
+        
+        .services h2 {
+            text-align: center;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image {
+            height: 200px;
+            background-color: #e0f2fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 3rem;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Process */
+        .process {
+            background-color: white;
+        }
+        
+        .process h2 {
+            text-align: center;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            top: 2.5rem;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e2e8f0;
+            z-index: 1;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 200px;
+        }
+        
+        .step-number {
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        
+        .step h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .step p {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        /* CTA with Contact Form */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-intro {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+        
+        /* Contact Form */
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background-color: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo-icon {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            background: white;
+        }
+        
+        .footer-logo:hover .footer-logo-icon {
+            transform: scale(1.05);
+        }
+        
+        .footer-logo-icon img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+        
+        .footer-about p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .social-links a {
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .differentiators {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 3rem;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .step::after {
+                content: "";
+                position: absolute;
+                bottom: -1.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 2rem;
+                background-color: #e2e8f0;
+            }
+            
+            .step:last-child::after {
+                display: none;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .logo {
+                margin-bottom: 0;
+                padding: 0.5rem;
+            }
+            
+            .logo-icon {
+                width: 5rem;
+                height: 5rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: white;
+                padding: 6rem 2rem 2rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 100;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 2rem;
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem;
+                border-radius: 0.75rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: relative;
+                top: auto;
+                right: auto;
+            }
+            
+            .mobile-close-btn {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 101;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 50%;
+                width: 3rem;
+                height: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+            
+            .nav-links.active ~ .mobile-close-btn {
+                opacity: 1;
+                pointer-events: all;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .hero-content {
+                min-height: auto;
+                padding: 3rem 0;
+            }
+            
+            .hero::before {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .differentiators {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+            
+            .footer-logo-icon {
+                width: 5rem;
+                height: 5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-icon {
+                width: 4rem;
+                height: 4rem;
+            }
+            
+            .footer-logo-icon {
+                width: 4rem;
+                height: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Side Navigation -->
+    <aside class="sidebar">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <img src="public/adroit_ai_logo.png" alt="Adroit AI Logo">
+            </div>
+        </a>
+        
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links">
+            <li><a href="#why-us"><i class="fas fa-star"></i> Why Us</a></li>
+            <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="#process"><i class="fas fa-project-diagram"></i> Process</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+        
+        <button class="mobile-close-btn">
+            <i class="fas fa-times"></i>
+        </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Comprehensive <span class="gradient-text">Tech Solutions</span> for Modern Businesses</h1>
+                        <p>We help startups and enterprises leverage cutting-edge technologies including AI, cloud computing, and custom software to drive innovation and growth.</p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn btn-primary">Get Started</a>
+                            <a href="#services" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section id="why-us" class="why-us">
+            <div class="container">
+                <div class="why-us-content">
+                    <h2>Why Choose <span class="gradient-text">Adroit AI</span>?</h2>
+                    <p>As a full-service technology partner, we bring fresh perspectives, cutting-edge approaches, and a commitment to delivering exceptional value across all your technology needs.</p>
+                    
+                    <div class="differentiators">
+                        <div class="differentiator">
+                            <h4><i class="fas fa-bolt"></i> Full Tech Stack Expertise</h4>
+                            <p>From frontend to backend, cloud to AI, we provide comprehensive solutions across the entire technology spectrum.</p>
+                        </div>
+                        
+                        <div class="differentiator">
+                            <h4><i class="fas fa-heart"></i> Business-First Approach</h4>
+                            <p>We align technology solutions with your business objectives, not the other way around.</p>
+                        </div>
+                        
+                        <div class="differentiator">
+                            <h4><i class="fas fa-gem"></i> Agile Development</h4>
+                            <p>We deliver solutions in iterative cycles, ensuring we're always moving toward your goals.</p>
+                        </div>
+                        
+                        <div class="differentiator">
+                            <h4><i class="fas fa-star"></i> Future-Proof Solutions</h4>
+                            <p>Our architectures are designed to evolve with your business and technological advancements.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="why-us-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Technology Solutions">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our <span class="gradient-text">Technology Services</span></h2>
+                <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem; color: var(--gray);">We deliver comprehensive technology solutions tailored to your business needs and technical requirements.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Cloud Solutions</h3>
+                            <p>Migrate, optimize, and manage your infrastructure on AWS, Azure, or Google Cloud platforms.</p>
+                            <a href="#contact" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>AI & Machine Learning</h3>
+                            <p>Implement intelligent solutions from predictive analytics to computer vision applications.</p>
+                            <a href="#contact" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Custom Software</h3>
+                            <p>Build tailored web and mobile applications designed for your specific business processes.</p>
+                            <a href="#contact" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Data Engineering</h3>
+                            <p>Design and implement robust data pipelines, warehouses, and analytics platforms.</p>
+                            <a href="#contact" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Cybersecurity</h3>
+                            <p>Protect your systems with comprehensive security assessments and implementations.</p>
+                            <a href="#contact" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-image">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>DevOps & Automation</h3>
+                            <p>Streamline your development lifecycle with CI/CD pipelines and infrastructure as code.</p>
+                            <a href="#contact" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section id="process" class="process">
+            <div class="container">
+                <h2>Our <span class="gradient-text">Collaborative Process</span></h2>
+                <p class="text-center" style="max-width: 700px; margin: 0 auto 3rem; color: var(--gray);">We've designed our engagement model to ensure transparency, flexibility, and results at every stage.</p>
+                
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Discovery</h4>
+                        <p>We learn about your business, challenges, and objectives.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Solution Design</h4>
+                        <p>We architect the right technology stack for your needs.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Development</h4>
+                        <p>We build the solution with regular progress updates.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Testing & Deployment</h4>
+                        <p>We ensure quality and implement the solution.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <h4>Optimization</h4>
+                        <p>We continuously monitor and improve the solution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA with Contact Form -->
+        <section id="contact" class="cta">
+            <div class="container">
+                <h2>Ready to Transform Your Business with Technology?</h2>
+                <p class="cta-intro">Schedule a free consultation to discuss how Adroit Tech can help you leverage the right technologies for your business needs.</p>
+                
+                <div class="form-container">
+                    <form>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width" style="margin-bottom:1.5rem">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group full-width" style="margin-bottom:1.5rem">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your project requirements..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-about">
+                        <a href="#" class="footer-logo">
+                            <div class="footer-logo-icon">
+                                <img src="public/adroit_ai_logo.png" alt="Adroit AI Logo">
+                            </div>
+                        </a>
+                        <p>Comprehensive technology solutions for businesses ready to embrace digital transformation.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Cloud Solutions</a></li>
+                            <li><a href="#">AI & ML</a></li>
+                            <li><a href="#">Custom Software</a></li>
+                            <li><a href="#">Data Engineering</a></li>
+                            <li><a href="#">Cybersecurity</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Approach</a></li>
+                            <li><a href="#">Case Studies</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:hello@adroittech.com">hello@adroittech.com</a></li>
+                            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                            <li>7901 4TH ST N STE 300</li>
+                            <li>ST PETERSBURG, FL 33702</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Adroit AI. All rights reserved. | <a href="#" style="color: #94a3b8;">Privacy Policy</a> | <a href="#" style="color: #94a3b8;">Terms of Service</a></p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.add('active');
+        });
+        
+        // Mobile Menu Close
+        document.querySelector('.mobile-close-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.remove('active');
+        });
+        
+        // Close menu when clicking on nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on Scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.service-card, .differentiator, .step');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.service-card, .differentiator, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+        });
+    </script>
+</body>
+</html>
